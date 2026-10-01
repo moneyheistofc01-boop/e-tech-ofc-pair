@@ -39,7 +39,9 @@ async function getCode(){
   try {
     const fs = require('fs');
     const pino = require('pino');
-    const { default: makeWASocket, useMultiFileAuthState, delay, makeCacheableSignalKeyStore } = require('@whiskeysockets/baileys');
+    
+    // බග් එක නිවැරදි කළ ස්ථානය: require වෙනුවට await import යොදා ඇත
+    const { default: makeWASocket, useMultiFileAuthState, delay, makeCacheableSignalKeyStore } = await import('@whiskeysockets/baileys');
     
     let number = (req.query.number || req.body?.number || '').replace(/[^0-9]/g,'');
     if(!number) return res.json({error:'Number required - e.g 2347072956206'});
